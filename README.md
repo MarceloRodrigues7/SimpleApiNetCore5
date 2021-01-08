@@ -3,35 +3,34 @@ api project .net core 5 + Mysql + JWT
 
 Database public in remotesql.com
 
-Routers:
-  Geration Token
-  [Post]
-    ../api/Home/login
-    Body: username:
-          password:
-      Return parameter: 
-          token bearer HmacSha256.
-          expired: 2 hours.
+Routers
 
-  Without Authentication
-  [GET]
-  ../api/Home/login
+Geration Token
+[Post]
+../api/Home/login
+Body: username and password:
+Return parameter: 
+token bearer HmacSha256.
+expired: 2 hours.
 
-  [GET]
-  ../api/datetime
+Without Authentication
+[GET]
+../api/Home/login
 
-  With Authentication
-  [GET]
-  ../api/Home/Login
+[GET]
+../api/datetime
 
-  [GET]
-  ../api/Users
+With Authentication
+[GET]
+../api/Home/Login
 
-  [Post]
-  ../api/Users/NewUser
-      Body: name,password and statusAccount
+[GET]
+../api/Users
 
-  [Delete]
-  ../api/Users/DelUser/{id}
-      Parameter in Url: id={id}
-      
+[Post]
+../api/Users/NewUser
+Body: name,password and statusAccount
+
+[Delete]
+../api/Users/DelUser/{id}
+Parameter in Url: id={id}
