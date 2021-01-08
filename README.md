@@ -8,10 +8,8 @@ Routers
 Geration Token
 [Post]
 ../api/Home/login
-Body: username and password:
-Return parameter: 
-token bearer HmacSha256.
-expired: 2 hours.
+Body: username and password
+Return parameter: token bearer HmacSha256 and expired: 2 hours.
 
 Without Authentication
 [GET]
