@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {}
+    "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {
+    "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
         "projectName": "ApiNetCore",
-        "projectPath": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+        "projectPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
         "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\obj\\",
+        "outputPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

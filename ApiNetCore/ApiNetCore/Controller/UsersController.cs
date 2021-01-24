@@ -67,5 +67,20 @@ namespace ApiNetCore.Controller
                 return new StatusCodeResult(500);
             }
         }
+        [HttpPut("UpStatus/")]
+        [Authorize]
+        public IActionResult Put_StatusUser(int id, int status)
+        {
+            try
+            {
+                var data = _userRepository.Put_StatusUser(id, status);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error trying to get data");
+                return new StatusCodeResult(500);
+            }
+        }
     }
 }

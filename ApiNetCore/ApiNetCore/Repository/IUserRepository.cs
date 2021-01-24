@@ -11,5 +11,6 @@ namespace ApiNetCore.Repository
         public IEnumerable<Users> GetUser();
         public IEnumerable<Users> PostNewUser(Users users);
         public IEnumerable<Users> DeleteUser(int id);
+        public IEnumerable<Users> Put_StatusUser(int id, int status);
     }
 }

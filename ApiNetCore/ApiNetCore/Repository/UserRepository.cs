@@ -16,14 +16,7 @@ namespace ApiNetCore.Repository
         {
             _connectionString = configuration.GetConnectionString("DataServer");
         }
-        //TokenApi
-        public static User Get(string username, string password)
-        {
-            var users = new List<User>();
-            users.Add(new User { Id = 1, Username = "apinetcore", Password = "pass123", Role = "manager" });
-            return users.Where(x => x.Username.ToLower() == username.ToLower() && x.Password == x.Password).FirstOrDefault();
-        }
-
+        // GET users
         public IEnumerable<Users> GetUser()
         {
             using var connection = new MySqlConnection(_connectionString);
@@ -31,18 +24,28 @@ namespace ApiNetCore.Repository
             var res = connection.Query<Users>(query);
             return res;
         }
+        // POST new user
         public IEnumerable<Users> PostNewUser(Users users)
         {
             using var connection = new MySqlConnection(_connectionString);
             var query = ("INSERT INTO users(name,password,statusAccount) VALUES (@name,@password,@statusAccount)");
-            var res = connection.Query<Users>(query, new { users.name,users.password,users.statusAccount });
+            var res = connection.Query<Users>(query, new { users.name, users.password, users.statusAccount });
             return res;
         }
+        // DELETE user Where ID
         public IEnumerable<Users> DeleteUser(int id)
         {
             using var connection = new MySqlConnection(_connectionString);
             var query = ("DELETE FROM users where id=@id");
             var res = connection.Query<Users>(query, new { id });
+            return res;
+        }
+        // UPDATE Status Account
+        public IEnumerable<Users> Put_StatusUser(int id, int status)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            var query = ("UPDATE users SET statusAccount=@status WHERE id=@id");
+            var res = connection.Query<Users>(query, new { id, status });
             return res;
         }
     }
