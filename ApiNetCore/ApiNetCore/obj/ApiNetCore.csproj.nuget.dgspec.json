@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {}
+    "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {
+    "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
         "projectName": "ApiNetCore",
-        "projectPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+        "projectPath": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
         "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GitHub\\ApiNetCore5\\ApiNetCore\\ApiNetCore\\obj\\",
+        "outputPath": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -71,6 +71,10 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.8.0, )"
@@ -94,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,4 +1,7 @@
-﻿using ApiNetCore.Domain;
+using ApiNetCore.Domain;
+using Dapper;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,6 @@ namespace ApiNetCore.Repository
     public interface IDatetimeRepository
     {
         public IEnumerable<dateTime> GetDateTime();
+
     }
 }

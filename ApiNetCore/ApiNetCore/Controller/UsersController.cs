@@ -23,7 +23,7 @@ namespace ApiNetCore.Controller
             _userRepository = userRepository;
         }
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public IActionResult GetUser()
         {
             try
@@ -38,7 +38,7 @@ namespace ApiNetCore.Controller
             }
         }
         [HttpPost("NewUser")]
-        [Authorize]
+        //[Authorize]
         public IActionResult PostNewUser([FromBody] Users users)
         {
             try
@@ -53,27 +53,12 @@ namespace ApiNetCore.Controller
             }
         }
         [HttpDelete("DelUser/{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult DeleteUser(int id)
         {
             try
             {
                 var data = _userRepository.DeleteUser(id);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error trying to get data");
-                return new StatusCodeResult(500);
-            }
-        }
-        [HttpPut("UpStatus/")]
-        [Authorize]
-        public IActionResult Put_StatusUser(int id, int status)
-        {
-            try
-            {
-                var data = _userRepository.Put_StatusUser(id, status);
                 return Ok(data);
             }
             catch (Exception ex)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApiNetCore.Repository
 {
-    public class datetimeRepository : IDatetimeRepository
+    public sealed class datetimeRepository : IDatetimeRepository
     {
         private readonly string _connectionString;
         public datetimeRepository(IConfiguration configuration)
@@ -18,10 +18,11 @@ namespace ApiNetCore.Repository
         }
         public IEnumerable<dateTime> GetDateTime()
         {
-            using var connection = new MySqlConnection(_connectionString);
+            var connection = new MySqlConnection(_connectionString);
             var query = ("select date(now()) as 'Date' ,now() as 'dateHour', CONVERT(time(now()),NCHAR) as 'hour'");
             var res = connection.Query<dateTime>(query);
             return res;
         }
+
     }
 }

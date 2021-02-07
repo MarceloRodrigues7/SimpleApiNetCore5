@@ -1,4 +1,5 @@
-﻿using ApiNetCore.Repository;
+﻿using ApiNetCore.Domain;
+using ApiNetCore.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

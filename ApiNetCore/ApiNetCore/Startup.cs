@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace ApiNetCore
@@ -19,10 +21,15 @@ namespace ApiNetCore
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IDatetimeRepository, datetimeRepository>();
 
-
-            services.AddMvcCore();
+            services.AddMvcCore().AddApiExplorer();
             services.AddCors();
             services.AddControllers();
+
+            //SwashBuckle
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
 
             //Itegration Token for Api
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
@@ -61,6 +68,20 @@ namespace ApiNetCore
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
+
+            //Swagger
+            app.UseSwagger(c => 
+            {
+                c.SerializeAsV2 = true;
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
