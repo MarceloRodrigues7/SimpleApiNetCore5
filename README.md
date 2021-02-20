@@ -1,4 +1,4 @@
-# ApiNetCore5
+# ApiNet5
 api project .net 5 + Mysql + JWT
 Easy deployment model
 
