@@ -23,11 +23,11 @@ namespace ApiNetCore.Controller
             _datetimeRepository = datetimeRepository;
         }
         [HttpGet]
-        public IActionResult GetDateTime()
+        public IActionResult Get_DateTime()
         {
             try
             {
-                var data = _datetimeRepository.GetDateTime();
+                var data = _datetimeRepository.Get_DateTime();
                 return Ok(data);
             }
             catch (Exception ex)
