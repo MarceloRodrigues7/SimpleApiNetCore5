@@ -7,8 +7,8 @@ namespace ApiNetCore.Domain
 {
     public class dateTime
     {
-        public string Date { get; set; }
-        public string dateHour { get; set; }
-        public string hour { get; set; }
+        public String Date { get; set; }
+        public String DateHour { get; set; }
+        public String Hour { get; set; }
     }
 }

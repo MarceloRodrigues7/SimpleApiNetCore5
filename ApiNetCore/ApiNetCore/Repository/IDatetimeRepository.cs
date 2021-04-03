@@ -11,7 +11,7 @@ namespace ApiNetCore.Repository
 {
     public interface IDatetimeRepository
     {
-        public IEnumerable<dateTime> GetDateTime();
+        public dateTime Get_DateTime();
 
     }
 }

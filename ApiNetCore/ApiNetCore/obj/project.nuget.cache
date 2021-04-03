@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KEFf0YZrPqsna1J4npmnvH8SRmrqGwcToH1bn8DdgbSN6kXy2EFSlqNLB91O9rMsV3UxOIQvBxWNQLllgsyF7g==",
+  "dgSpecHash": "LOgQQWlJuBL+VblG77Oq//WOTUHbRLfQfcAcMzeOWZHgOzNPY705wAMt0oht7bKSiMhcMbq0KSUTCwdSmGbhwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\marce\\source\\repos\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+  "projectFilePath": "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Trabalho\\SimpleApiNet5\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marce\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",

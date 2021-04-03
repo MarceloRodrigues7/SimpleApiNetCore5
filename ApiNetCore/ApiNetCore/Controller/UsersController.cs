@@ -23,7 +23,7 @@ namespace ApiNetCore.Controller
             _userRepository = userRepository;
         }
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public IActionResult GetUser()
         {
             try
@@ -37,14 +37,24 @@ namespace ApiNetCore.Controller
                 return new StatusCodeResult(500);
             }
         }
-        [HttpPost("NewUser")]
-        //[Authorize]
+        [HttpPost]
+        [Authorize]
         public IActionResult PostNewUser([FromBody] Users users)
         {
             try
             {
                 var data = _userRepository.PostNewUser(users);
-                return Ok(data);
+                var res = data.FirstOrDefault().name;
+                if (res == null)
+                {
+                    _logger.LogWarning($"Usuário:{users.name} já existe.");
+                    return Problem($"Usuário:{users.name} já existe.", null,406);
+                }
+                else
+                {
+                    _logger.LogInformation($"Usuário:{users.name} criado com sucesso.");
+                    return Ok(data);
+                }
             }
             catch (Exception ex)
             {
@@ -52,8 +62,8 @@ namespace ApiNetCore.Controller
                 return new StatusCodeResult(500);
             }
         }
-        [HttpDelete("DelUser/{id}")]
-        //[Authorize]
+        [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult DeleteUser(int id)
         {
             try

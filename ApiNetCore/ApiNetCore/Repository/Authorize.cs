@@ -6,7 +6,12 @@ namespace ApiNetCore.Repository
 {
     public class Authorize
     {
-        //TokenApi
+        /// <summary>
+        /// Method validation users and return token to Controllers 
+        /// </summary>
+        /// <param name="username">User Token</param>
+        /// <param name="password">Pass Token</param>
+        /// <returns></returns>
         public static User Get(string username, string password)
         {
             var users = new List<User>();

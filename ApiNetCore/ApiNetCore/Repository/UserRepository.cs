@@ -3,6 +3,7 @@ using Dapper;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,47 +17,59 @@ namespace ApiNetCore.Repository
         {
             _connectionString = configuration.GetConnectionString("DataServer");
         }
-        //TokenApi
-        public static User Get(string username, string password)
-        {
-            var users = new List<User>();
-            users.Add(new User { Id = 1, Username = "apinetcore", Password = "pass123", Role = "manager" });
-            return users.Where(x => x.Username.ToLower() == username.ToLower() && x.Password == x.Password).FirstOrDefault();
-        }
 
+        /// <summary>
+        /// Return all Users to table users 
+        /// </summary>
+        /// <returns>id,name,passwor in HEX, statusAccount,dateCreate</returns>
         public IEnumerable<Users> GetUser()
         {
             using var connection = new MySqlConnection(_connectionString);
-            var query = ("SELECT id, name, '******' as 'password',statusAccount,dateCreate FROM users");
+            var query = "SELECT id, name, HEX(password)as 'password',statusAccount,dateCreate FROM users";
             var res = connection.Query<Users>(query);
             return res;
         }
+
         public IEnumerable<Users> PostNewUser(Users users)
         {
             using var connection = new MySqlConnection(_connectionString);
 
-            var queryValid = ("SELECT count(name) as id from users where name=@name");
-            var execValid = connection.Query<Users>(queryValid, new { users.name });
+            var query = "SELECT * FROM users WHERE name=@name";
+            var exec = connection.Query<Users>(query, new { users.name });
             
-            if (execValid.Count() == 0)
+            if (exec.FirstOrDefault() == null)
             {
-                var query = ("INSERT INTO users(name,password,statusAccount) VALUES (@name,@password,@statusAccount)");
-                var res = connection.Query<Users>(query, new { users.name, users.password, users.statusAccount });
+                query = "INSERT INTO users(name,password,statusAccount) VALUES (@name,@password,@statusAccount)";
+                connection.Query<Users>(query, new { users.name, users.password, users.statusAccount });
+                query = "SELECT id, name, HEX(password)as 'password',statusAccount,dateCreate FROM users WHERE name=@name";
+                var res = connection.Query<Users>(query, new { users.name });
                 return res;
             }
             else
             {
-                var query=("");
-                var res = connection.Query<Users>(query);
+                var res = UsersEmpty();
                 return res;
             }
         }
         public IEnumerable<Users> DeleteUser(int id)
         {
             using var connection = new MySqlConnection(_connectionString);
-            var query = ("DELETE FROM users where id=@id");
+            var query = "DELETE FROM users where id=@id";
             var res = connection.Query<Users>(query, new { id });
             return res;
+        }
+
+        /// <summary>
+        /// Return new IEnumerable Users null
+        /// </summary>
+        /// <returns>New Users Empty</returns>
+        public IEnumerable<Users> UsersEmpty()
+        {         
+            IEnumerable<Users> userNull = new List<Users>
+            {
+            new Users { id=1,name=null,password=null,statusAccount=0,dateCreate=null}
+            };
+            return userNull;
         }
     }
 }

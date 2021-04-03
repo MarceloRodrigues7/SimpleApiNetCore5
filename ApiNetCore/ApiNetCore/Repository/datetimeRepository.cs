@@ -11,17 +11,30 @@ namespace ApiNetCore.Repository
 {
     public sealed class datetimeRepository : IDatetimeRepository
     {
-        private readonly string _connectionString;
-        public datetimeRepository(IConfiguration configuration)
+        /*public datetimeRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DataServer");
-        }
-        public IEnumerable<dateTime> GetDateTime()
+        }*/
+
+        /// <summary>
+        /// Method return values for objects class datetime
+        /// </summary>
+        /// <returns>Date,DateTime,Time</returns>
+        public dateTime Get_DateTime()
         {
-            var connection = new MySqlConnection(_connectionString);
-            var query = ("select date(now()) as 'Date' ,now() as 'dateHour', CONVERT(time(now()),NCHAR) as 'hour'");
-            var res = connection.Query<dateTime>(query);
-            return res;
+            dateTime dateTime = new dateTime();
+            
+            dateTime.Date = DateTime.Now.ToString("dd/MM/yyyy");
+            dateTime.DateHour = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            dateTime.Hour = Hour();
+
+            return dateTime;
+        }
+
+        public string Hour()
+        {
+            var hour = $"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}";
+            return hour;
         }
 
     }

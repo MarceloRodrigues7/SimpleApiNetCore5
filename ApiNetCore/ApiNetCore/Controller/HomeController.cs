@@ -20,7 +20,7 @@ namespace ApiStiChatBot.Controller
         [AllowAnonymous]
         public ActionResult<dynamic> Authenticate([FromBody] User model)
         {
-            var user = UserRepository.Get(model.Username, model.Password);
+            var user = Authorize.Get(model.Username, model.Password);
 
             if (user == null)
                 return NotFound(new { message = "username or password is invalid" });
@@ -33,6 +33,7 @@ namespace ApiStiChatBot.Controller
                 token = token
             };
         }
+
         [HttpGet]
         [Route("anonymous")]
         [AllowAnonymous]
