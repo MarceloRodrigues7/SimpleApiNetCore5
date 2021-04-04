@@ -51,7 +51,7 @@ namespace ApiNetCore.Controller
                 {
                     var message = $"User:{users.name} already exists.";
                     _logger.LogWarning(message);
-                    return Problem(message,null,406,null,null);
+                    return Problem(message,null,406);
                 } 
                 else
                 {
