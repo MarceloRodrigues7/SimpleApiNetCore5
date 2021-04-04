@@ -41,7 +41,6 @@ namespace ApiNetCore.Repository
 
             var query = "SELECT * FROM users WHERE name=@name";
             var exec = connection.Query<Users>(query, new { users.name });
-            
             if (exec.FirstOrDefault() == null)
             {
                 query = "INSERT INTO users(name,password,statusAccount) VALUES (@name,@password,@statusAccount)";
