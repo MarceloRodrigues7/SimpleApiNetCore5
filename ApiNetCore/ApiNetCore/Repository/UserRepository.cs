@@ -30,6 +30,11 @@ namespace ApiNetCore.Repository
             return res;
         }
 
+        /// <summary>
+        /// Method create new Users
+        /// </summary>
+        /// <param name="users">name,password,statusAccount</param>
+        /// <returns>New Users</returns>
         public IEnumerable<Users> PostNewUser(Users users)
         {
             using var connection = new MySqlConnection(_connectionString);
@@ -51,12 +56,24 @@ namespace ApiNetCore.Repository
                 return res;
             }
         }
+        
         public IEnumerable<Users> DeleteUser(int id)
         {
             using var connection = new MySqlConnection(_connectionString);
-            var query = "DELETE FROM users where id=@id";
+            
+            var query = "Select * from users where id=@id";
             var res = connection.Query<Users>(query, new { id });
-            return res;
+            if(res.Count() == 0)
+            {
+                res = UsersEmpty();
+                return res;
+            }
+            else
+            {
+                query = "DELETE FROM users where id=@id";
+                res = connection.Query<Users>(query, new { id });
+                return res;
+            }
         }
 
         /// <summary>

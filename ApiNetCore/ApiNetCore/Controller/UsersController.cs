@@ -22,6 +22,7 @@ namespace ApiNetCore.Controller
             _logger = logger;
             _userRepository = userRepository;
         }
+
         [HttpGet]
         [Authorize]
         public IActionResult GetUser()
@@ -37,6 +38,7 @@ namespace ApiNetCore.Controller
                 return new StatusCodeResult(500);
             }
         }
+
         [HttpPost]
         [Authorize]
         public IActionResult PostNewUser([FromBody] Users users)
@@ -47,12 +49,14 @@ namespace ApiNetCore.Controller
                 var res = data.FirstOrDefault().name;
                 if (res == null)
                 {
-                    _logger.LogWarning($"Usuário:{users.name} já existe.");
-                    return Problem($"Usuário:{users.name} já existe.", null,406);
-                }
+                    var message = $"User:{users.name} already exists.";
+                    _logger.LogWarning(message);
+                    return Problem(message, null,406);
+                } 
                 else
                 {
-                    _logger.LogInformation($"Usuário:{users.name} criado com sucesso.");
+                    var message = $"User:{users.name} successfully created.";
+                    _logger.LogInformation(message);
                     return Ok(data);
                 }
             }
@@ -62,6 +66,7 @@ namespace ApiNetCore.Controller
                 return new StatusCodeResult(500);
             }
         }
+
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult DeleteUser(int id)
@@ -69,7 +74,17 @@ namespace ApiNetCore.Controller
             try
             {
                 var data = _userRepository.DeleteUser(id);
-                return Ok(data);
+                var res = data.FirstOrDefault();
+                if (res == null)
+                {
+                    return Accepted($"Id:{id} delete.");
+                }
+                else
+                {
+                    var message = $"Id:{id} not exists.";
+                    _logger.LogWarning(message);
+                    return Problem(message, null, 406);
+                }
             }
             catch (Exception ex)
             {

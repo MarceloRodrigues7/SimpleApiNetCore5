@@ -11,11 +11,6 @@ namespace ApiNetCore.Repository
 {
     public sealed class datetimeRepository : IDatetimeRepository
     {
-        /*public datetimeRepository(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetConnectionString("DataServer");
-        }*/
-
         /// <summary>
         /// Method return values for objects class datetime
         /// </summary>
@@ -23,11 +18,9 @@ namespace ApiNetCore.Repository
         public dateTime Get_DateTime()
         {
             dateTime dateTime = new dateTime();
-            
             dateTime.Date = DateTime.Now.ToString("dd/MM/yyyy");
             dateTime.DateHour = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             dateTime.Hour = Hour();
-
             return dateTime;
         }
 
