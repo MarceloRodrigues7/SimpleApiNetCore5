@@ -50,7 +50,7 @@ namespace ApiNetCore.Controller
                 if (res.name == null)
                 {
                     _logger.LogWarning($"User:{users.name} already exists.");
-                    return Problem($"User:{users.name} already exists.",null,406);
+                    return Problem($"User:{users.name} already exists.",406);
                 } 
                 else
                 {
@@ -80,7 +80,7 @@ namespace ApiNetCore.Controller
                 else
                 {
                     _logger.LogWarning($"Id:{id} not exists.");
-                    return Problem($"Id:{id} not exists.", null, 406);
+                    return Problem($"Id:{id} not exists.",406);
                 }
             }
             catch (Exception ex)
