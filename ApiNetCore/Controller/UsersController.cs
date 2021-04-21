@@ -46,17 +46,15 @@ namespace ApiNetCore.Controller
             try
             {
                 var data = _userRepository.PostNewUser(users);
-                var res = data.FirstOrDefault().name;
-                if (res == null)
+                var res = data.FirstOrDefault();
+                if (res.name == null)
                 {
-                    var message = $"User:{users.name} already exists.";
-                    _logger.LogWarning(message);
-                    return Problem(message,null,406);
+                    _logger.LogWarning($"User:{users.name} already exists.");
+                    return Problem($"User:{users.name} already exists.",null,406);
                 } 
                 else
                 {
-                    var message = $"User:{users.name} successfully created.";
-                    _logger.LogInformation(message);
+                    _logger.LogInformation($"User:{users.name} successfully created.");
                     return Ok(data);
                 }
             }
@@ -81,9 +79,8 @@ namespace ApiNetCore.Controller
                 }
                 else
                 {
-                    var message = $"Id:{id} not exists.";
-                    _logger.LogWarning(message);
-                    return Problem(message, null, 406);
+                    _logger.LogWarning($"Id:{id} not exists.");
+                    return Problem($"Id:{id} not exists.", null, 406);
                 }
             }
             catch (Exception ex)
